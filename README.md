@@ -1,12 +1,45 @@
-# React + Vite
+# 💸 Expense Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple personal expense tracker built with **React**. Add expenses with a description, amount and date, see the running total in rupees, and delete entries. Data is saved in the browser, so it survives page refreshes.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Add an expense with **description, amount (₹) and date**
+- Input validation: all fields are required and the amount must be greater than zero
+- Delete any expense with one click
+- **Live total** of all expenses
+- **Persistent storage** with the browser's `localStorage`: no account or backend needed
 
-## Expanding the ESLint configuration
+## How it works
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React `useState` holds the list of expenses and the form fields.
+- A `useEffect` hook writes the list to `localStorage` whenever it changes.
+- The list is read back on first load, so data survives refreshes.
+- The total is computed with `Array.reduce`.
+
+## Run it
+
+```bash
+npm install
+npm run dev
+# open the local URL Vite prints (usually http://localhost:5173)
+```
+
+## Project structure
+
+```
+src/
+  App.jsx    all app logic and UI
+  App.css    styles
+  main.jsx   entry point
+```
+
+## Possible next steps
+
+- Categories (food, travel, rent) with a pie chart of spending
+- Monthly filter and summary
+- Export to CSV
+
+## Tech
+
+React 19 · Vite · JavaScript · localStorage
